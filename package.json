@@ -13,6 +13,9 @@
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=14 <15"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
