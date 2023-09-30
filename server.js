@@ -1,40 +1,45 @@
-import express from "express";
-import colors from "colors";
-import dotenv from "dotenv";
-import morgan from "morgan";
-import connectDB from "./Config/db.js";
-import authRoutes from './routes/authRoutes.js';
-import contactRoutes from './routes/contactRoutes.js';
-import eventRoutes from "./routes/eventRoutes.js";
-import categoryRoute from "./routes/categoryRoute.js"
-import cors from "cors";
-//configure env
-dotenv.config();
+import express from "express"
+import dotenv from "dotenv"
+import morgan from "morgan"
+import connectDB from "./config/db.js"
+import authRoutes from "./routes/auth.js"
+import contactRoutes from './routes/contact.js'
+import categoryRoute from './routes/categoryRoute.js'
+// import eventRoute from './routes/eventRoute.js'
+import eventsRoute from './routes/eventsRoute.js'
+import cors from 'cors';
 
-//database config
-connectDB();
+//configure
+dotenv.config()
 
+//database connection
+connectDB()
 
-//rest object
-const app = express();
+//rest api
+const app = express()
 
-//middlewares
+//middleware
 app.use(cors())
-app.use(express.json());
-app.use(morgan('dev'));
-app.use(express.json());
+app.use(express.json())
+app.use(morgan('dev'))
+
 //routes
-app.use('/api/v1/auth',authRoutes);
-app.use('/api/v1/contact',contactRoutes);
-app.use('/api/v1/category', categoryRoute);
-app.use('/api/v1/event', eventRoutes);
+app.use('/api/v1/auth', authRoutes)
+app.use('/api/v1/contact', contactRoutes)
+app.use('/api/v1/category', categoryRoute)
+// app.use('/api/v1/event', eventRoute)
+app.use('/api/v1/events', eventsRoute)
 
-app.get('/',(req,res) => {
-    res.send("<h1>Welcome to MERN stack project</h1>")
-});
 
-const PORT = 8000;
+//rest api
+app.get("/", (req, res) => {
+    res.send('<h1>"Welcome to blood donation and information system"</h1>')
+})
 
-app.listen(PORT,() => {
-    console.log(`Server running on ${process.env.DEV_MODE} ${PORT}`.bgCyan.white);
-});
+//PORT
+const PORT = process.env.PORT || 8000
+
+//run listen
+app.listen(PORT, () => {
+    console.log(`server running on PORT no. ${PORT}`)
+})
