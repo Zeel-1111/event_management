@@ -161,7 +161,7 @@ export const deleteEventController = async (req, res) => {
 
 //upate event
 //upate event
-export const updateEventsController = async (req, res) => {
+/*export const updateEventsController = async (req, res) => {
     console.log("update")
     console.log(req.body);
     try {
@@ -209,4 +209,4 @@ export const updateEventsController = async (req, res) => {
             message: "Error in Updte event",
         });
     }
-};
+};*/
